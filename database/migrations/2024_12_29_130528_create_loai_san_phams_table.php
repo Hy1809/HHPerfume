@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('loai_san_phams', function (Blueprint $table) {
             $table->id();
+            $table->string('tenloai');
+            $table->string('tenloai_slug');
             $table->timestamps();
         });
     }
@@ -22,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('loai_san_phams');
+        Schema::dropIfExists('loai_san_pham');
     }
 };
