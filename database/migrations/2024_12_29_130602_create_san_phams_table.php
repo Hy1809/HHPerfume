@@ -11,8 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('san_phams', function (Blueprint $table) {
+        Schema::create('sanpham', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('loaisanpham_id')->constrained('loaisanpham');
+            $table->foreignId('thuonghieu_id')->constrained('thuonghieu');
+            $table->string('tensanpham');
+            $table->string('tensanpham_slug');
+            $table->double('dungtichml');
+            $table->integer('soluong');
+            $table->double('dongia');
+            $table->string('hinhanh')->nullable();
+            $table->text('ghichu')->nullable();
             $table->timestamps();
         });
     }
@@ -22,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('san_phams');
+        Schema::dropIfExists('sanpham');
     }
 };
